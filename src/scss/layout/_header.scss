@@ -3,5 +3,9 @@
   left: 0;
   top: 0;
   width: 100vw;
-  padding: 1rem;
+  padding: 10px 10px 0 10px;
+  background-color: $color-secondary;
+  &--nav {
+    margin: 10px 0;
+  }
 }
