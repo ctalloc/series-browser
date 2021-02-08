@@ -5,7 +5,18 @@
   width: 100vw;
   padding: 10px 10px 0 10px;
   background-color: $color-secondary;
+  z-index: 1;
+  &--title {
+    font-family: $font-main;
+    font-size: 50px;
+    text-align: center;
+  }
   &--nav {
     margin: 10px 0;
   }
+}
+.nav__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

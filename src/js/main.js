@@ -30,7 +30,6 @@ function renderResult(series) {
     const showItem = serie.show;
     const showTitle = showItem.name;
     let showImages = showItem.image;
-    //const showThumbnail = `${showImages.medium}`;
     const showThumbnail = isImgUrlValid();
     function isImgUrlValid() {
       let validUrl = "";
@@ -42,7 +41,7 @@ function renderResult(series) {
       }
       return validUrl;
     }
-    htmlCode += '<li class="resultList__item">';
+    htmlCode += '<li class="resultList--item">';
     htmlCode += `<img src="${showThumbnail}" alt="${showTitle} poster">`;
     htmlCode += `<p>${showTitle}</p>`;
     htmlCode += "</li>";

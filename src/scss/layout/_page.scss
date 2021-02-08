@@ -1,8 +1,29 @@
-body {
-  position: relative;
-  top: 100px;
-  padding: 2rem;
-  height: 100vh;
+.body {
   background-color: $color-bg;
+}
+
+.page__main {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 110px;
   font-family: $font-main;
+  &--favoriteContainer {
+    background-image: linear-gradient(white, #555555);
+    width: 30%;
+    padding: 15px;
+  }
+  &--resultContainer {
+    padding: 15px;
+    width: 70%;
+  }
+}
+.resultList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  list-style-type: none;
+  font-size: 18px;
+  &--item{
+    padding: 20px;
+  }
 }
