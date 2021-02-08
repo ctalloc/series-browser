@@ -31,9 +31,8 @@ function renderResult(series) {
     const showTitle = showItem.name;
     const showImages = showItem.image;
     const showThumbnail = `${showImages.medium}`;
-    console.log(showThumbnail);
-    htmlCode += '<li>';
-    htmlCode += `<img src="${showThumbnail}">`;
+    htmlCode += '<li class="resultList__item">';
+    htmlCode += `<img src="${showThumbnail}" alt="${showTitle} poster">`;
     htmlCode += `<p>${showTitle}</p>`;
     htmlCode += '</li>';
   }
