@@ -25,16 +25,27 @@ function callToApi(searchValue) {
 //PAINT
 
 function renderResult(series) {
-  let htmlCode = '';
+  let htmlCode = "";
   for (const serie of series) {
     const showItem = serie.show;
     const showTitle = showItem.name;
-    const showImages = showItem.image;
-    const showThumbnail = `${showImages.medium}`;
+    let showImages = showItem.image;
+    //const showThumbnail = `${showImages.medium}`;
+    const showThumbnail = isImgUrlValid();
+    function isImgUrlValid() {
+      let validUrl = "";
+      if (showItem.image === null) {
+        validUrl = `https://via.placeholder.com/210x295/ffffff/666666/?
+            text=TV`;
+      } else {
+        validUrl = `${showImages.medium}`;
+      }
+      return validUrl;
+    }
     htmlCode += '<li class="resultList__item">';
     htmlCode += `<img src="${showThumbnail}" alt="${showTitle} poster">`;
     htmlCode += `<p>${showTitle}</p>`;
-    htmlCode += '</li>';
+    htmlCode += "</li>";
   }
   resultsElement.innerHTML = htmlCode;
 }
