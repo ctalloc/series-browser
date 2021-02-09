@@ -34,6 +34,7 @@ function renderResult() {
     const showTitle = showItem.name;
     const showId = showItem.id;
     let showImages = showItem.image;
+    let isFavoriteClass = isFavoriteShow(serie) ? 'show--favorite' : '';
     const showThumbnail = isImgUrlValid();
     function isImgUrlValid() {
       let validUrl = "";
@@ -45,13 +46,22 @@ function renderResult() {
       }
       return validUrl;
     }
-    htmlCode += `<li class="resultList--item js-show" id="${showId}">`;
+    htmlCode += `<li class="resultList--item js-show ${isFavoriteClass}" id="${showId}">`;
     htmlCode += `<img src="${showThumbnail}" alt="${showTitle} poster">`;
     htmlCode += `<p>${showTitle}</p>`;
     htmlCode += "</li>";
   }
   resultsElement.innerHTML = htmlCode;
   listenShowsEvents();
+}
+
+//IS FAVORITE SHOW
+
+function isFavoriteShow(shows) {
+  // compruebo si la paleta que recibo por parámetro está en los favoritos
+  // find devuelve undefined o el elemento encontrado
+  // si lo niego dos veces convierto de truthy a true y del falsy a false
+  return !!favoriteShows.find(favorite => favorite.show.id === shows.show.id);
 }
 
 //PREVENT DEFAULT FORM BTN
@@ -94,17 +104,15 @@ function handleShow(ev) {
       console.log("te encontré");
       function isItAFavorite() {
         console.log("es favorita o no");
-       // for (const favorite of favoriteShows) {
-          console.log("buscando en favoritos");
-            const favoritesFoundIndex = favoriteShows.findIndex((favorite) => favorite.show.id === parseInt(clickedShowId)
-          );
-          if (favoritesFoundIndex === -1) {
-            favoriteShows.push(result)
-          } else {
-            favoriteShows.splice(favoritesFoundIndex, 1)
-          }
-          console.log(favoritesFoundIndex);
-       // }
+        const favoritesFoundIndex = favoriteShows.findIndex(
+          (favorite) => favorite.show.id === parseInt(clickedShowId)
+        );
+        if (favoritesFoundIndex === -1) {
+          favoriteShows.push(result);
+        } else {
+          favoriteShows.splice(favoritesFoundIndex, 1);
+        }
+        console.log(favoritesFoundIndex);
       }
       isItAFavorite();
     }
@@ -114,8 +122,6 @@ function handleShow(ev) {
   renderResult();
   paintFavorites();
 }
-
-//RUN THROUGH FAVORITES
 
 //SAVE FAVORITES IN LOCAL STORAGE
 
