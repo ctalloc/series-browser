@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  top: 110px;
+  top: 80px;
   font-family: $font-main;
   &--favoriteContainer {
     background-image: linear-gradient(white, #555555);
@@ -20,7 +20,7 @@
 }
 .resultList {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   list-style-type: none;
   font-size: 18px;
   &--item{

@@ -41,7 +41,7 @@ function renderResult() {
       return validUrl;
     }
     htmlCode += `<li class="resultList--item js-show ${isFavoriteClass}" id="${showId}">`;
-    htmlCode += `<img src="${showThumbnail}" alt="${showTitle} poster">`;
+    htmlCode += `<img src="${showThumbnail}" alt="${showTitle} poster" title="Click para agregar/quitar ${showTitle} a favoritos">`;
     htmlCode += `<p>${showTitle}</p>`;
     htmlCode += "</li>";
   }
@@ -59,7 +59,6 @@ function isFavoriteShow(shows) {
 
 function handleForm(ev) {
   ev.preventDefault();
-  console.log("No hago submit.");
 }
 
 formElement.addEventListener("submit", handleForm);
@@ -84,9 +83,7 @@ function listenShowsEvents() {
 function handleShow(ev) {
   const clickedShow = ev.currentTarget;
   const clickedShowId = clickedShow.id;
-  //console.log(clickedShowId);
   const resultShows = shows;
-  //console.log(resultShows);
   for (const result of resultShows) {
     const showItem = result.show;
     const itemId = showItem.id;
@@ -101,13 +98,11 @@ function handleShow(ev) {
         } else {
           favoriteShows.splice(favoritesFoundIndex, 1);
         }
-        console.log(favoritesFoundIndex);
       }
       isItAFavorite();
     }
   }
   saveLocalFavorites();
-  console.log(favoriteShows);
   renderResult();
   paintFavorites();
 }
@@ -151,8 +146,8 @@ function paintFavorites() {
       }
       return validUrl;
     }
-    htmlCode += `<li id="${favoriteId}">`;
-    htmlCode += `<img src="${favoriteThumbnail}" alt="${favoriteTitle} poster">`;
+    htmlCode += `<li id="${favoriteId} class="favList--item">`;
+    htmlCode += `<img src="${favoriteThumbnail}" alt="${favoriteTitle} poster" title="${favoriteTitle}">`;
     htmlCode += `<p>${favoriteTitle}</p>`;
     htmlCode += `<button class="js-delete delete__button" id="${favoriteShows.indexOf(favorite)}">`;
     htmlCode += `<span>Borrar</span>`;
@@ -174,7 +169,7 @@ function listenDeleteButtons() {
 
 function handleDelete(ev) {
   const clickedIndex = parseInt(ev.currentTarget.id);
-  console.log('currentTarget', ev.currentTarget.id, clickedIndex);
   favoriteShows.splice(clickedIndex, 1);
   paintFavorites();
+  renderResult();
 }
