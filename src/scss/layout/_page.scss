@@ -1,16 +1,18 @@
 .body {
-  background-color: $color-bg;
+  background-color: $color-bg1;
 }
 
 .page__main {
+  height: 100vh;
   display: flex;
   flex-direction: row;
   position: relative;
   top: 80px;
   font-family: $font-main;
   &--favoriteContainer {
-    background-image: linear-gradient(white, #555555);
+    background-image: linear-gradient($color-bg1, $color-bg2);
     width: 30%;
+    height: 100%;
     padding: 15px;
   }
   &--resultContainer {
@@ -27,8 +29,15 @@
     padding: 20px;
   }
 }
+.favorites {
+  &__title {
+    font-family: $font-title;
+  }
+  &__list {
+    font-family: $font-main;
+  }
+}
 .show--favorite{
-  background-color: plum;
+  background-color: $color-bg3;
 }
-.delete__button{
-}
+

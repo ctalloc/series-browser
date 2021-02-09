@@ -3,29 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Buscador de series para viejóvenes</title>
+    <title>Buscador de series</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="icon" href="./assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body class="body">
     <div class="page">
       <header class="page__header">
-        <h1 class="page__header--title">Buscador de series para viejóvenes</h1>
-        <nav class="page__header--nav">
-          <form class="nav__form js-form">
-            <label>Escribe el nombre de la película </label>
-            <input type="text" class="nav__input js-searchInput" name="search" />
-            <input type="submit" value="Search" class="nav--button js-searchBtn" />
-          </form>
-        </nav>
+        <div class="page__header--container">
+          <h1 class="page__header--title">Buscador de series</h1>
+          <nav class="page__header--nav">
+            <form class="nav__form js-form">
+              <input type="text" class="nav__input js-searchInput" name="search" placeholder="Buscar series...">
+              <button class="nav--button js-searchBtn"><i class="fa fa-search nav--button--icon"></i></button>
+            </form>
+          </nav>
+        </div>
       </header>
 
       <main class="page__main">
         <section class="page__main--favoriteContainer">
           <h2 class="favorites___title">Series favoritas</h2>
-          <ul class="js-favoritesList"></ul>
+          <ul class="js-favoritesList favorites___list"></ul>
         </section>
         <section class="page__main--resultContainer">
           <ul class="resultList js-results"></ul>

@@ -4,7 +4,7 @@
   top: 0;
   width: 100vw;
   padding: 20px 0 0 0;
-  background-color: $color-secondary;
+  background-color: $color-bg2;
   z-index: 1;
   &--container {
     max-width: 1600px;
@@ -15,9 +15,12 @@
     align-items: flex-end;
   }
   &--title {
-    font-family: $font-main;
+    font-family: $font-title;
     line-height: 60px;
+    letter-spacing: 2px;
     font-size: 40px;
+    color: $color-txt2;
+    text-shadow: 3px 3px $color-txt3;
   }
   &--nav {
     font-family: $font-main;
@@ -29,10 +32,6 @@
     flex-direction: row;
     justify-content: flex-end;
   }
-  &__label{
-    padding: 5px;
-    font-size: 16px;
-  }
   &__input {
     border: none;
     padding: 5px;
@@ -40,6 +39,9 @@
   &--button {
     border: none;
     padding: 5px;
-    font-family: $font-main;
+    &--icon{
+      font-size: 20px !important;
+    }
   }
 }
+
