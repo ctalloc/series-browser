@@ -1,11 +1,5 @@
 "use strict";
 
-//js-results js-form js-searchInput js-searchBtn
-
-//API
-
-//SEARCH
-
 const formElement = document.querySelector(".js-form");
 const btnElement = document.querySelector(".js-searchBtn");
 const inputElement = document.querySelector(".js-searchInput");
@@ -58,9 +52,6 @@ function renderResult() {
 //IS FAVORITE SHOW
 
 function isFavoriteShow(shows) {
-  // compruebo si la paleta que recibo por parámetro está en los favoritos
-  // find devuelve undefined o el elemento encontrado
-  // si lo niego dos veces convierto de truthy a true y del falsy a false
   return !!favoriteShows.find(favorite => favorite.show.id === shows.show.id);
 }
 
@@ -101,9 +92,7 @@ function handleShow(ev) {
     const itemId = showItem.id;
     const stringId = `${itemId}`;
     if (stringId === clickedShowId) {
-      console.log("te encontré");
       function isItAFavorite() {
-        console.log("es favorita o no");
         const favoritesFoundIndex = favoriteShows.findIndex(
           (favorite) => favorite.show.id === parseInt(clickedShowId)
         );
@@ -133,7 +122,6 @@ function saveLocalFavorites() {
 //GET FROM LOCAL
 
 function getFromLocalStorage() {
-  console.log("hola");
   const localStorageFavorites = localStorage.getItem("showFavorites");
   if (localStorageFavorites) {
     const arrayFavorites = JSON.parse(localStorageFavorites);
@@ -166,7 +154,27 @@ function paintFavorites() {
     htmlCode += `<li id="${favoriteId}">`;
     htmlCode += `<img src="${favoriteThumbnail}" alt="${favoriteTitle} poster">`;
     htmlCode += `<p>${favoriteTitle}</p>`;
+    htmlCode += `<button class="js-delete delete__button" id="${favoriteShows.indexOf(favorite)}">`;
+    htmlCode += `<span>Borrar</span>`;
+    htmlCode += `</button>`;
     htmlCode += "</li>";
   }
   favoritesListElement.innerHTML = htmlCode;
+  listenDeleteButtons()
+}
+
+// DELETE BUTTON
+
+function listenDeleteButtons() {
+  const deleteButtons = document.querySelectorAll('.js-delete');
+  for (const deleteButton of deleteButtons) {
+    deleteButton.addEventListener('click', handleDelete);
+  }
+}
+
+function handleDelete(ev) {
+  const clickedIndex = parseInt(ev.currentTarget.id);
+  console.log('currentTarget', ev.currentTarget.id, clickedIndex);
+  favoriteShows.splice(clickedIndex, 1);
+  paintFavorites();
 }
