@@ -10,7 +10,7 @@ const formElement = document.querySelector(".js-form");
 const btnElement = document.querySelector(".js-searchBtn");
 const inputElement = document.querySelector(".js-searchInput");
 const resultsElement = document.querySelector(".js-results");
-const favoritesListElement = document.querySelector('.js-favoritesList');
+const favoritesListElement = document.querySelector(".js-favoritesList");
 let shows = [];
 let favoriteShows = [];
 
@@ -27,9 +27,9 @@ function callToApi(searchValue) {
 
 //PAINT SHOW RESULTS AND LISTEN
 
-function renderResult(series) {
+function renderResult() {
   let htmlCode = "";
-  for (const serie of series) {
+  for (const serie of shows) {
     const showItem = serie.show;
     const showTitle = showItem.name;
     const showId = showItem.id;
@@ -51,7 +51,7 @@ function renderResult(series) {
     htmlCode += "</li>";
   }
   resultsElement.innerHTML = htmlCode;
-  listenShowsEvents()
+  listenShowsEvents();
 }
 
 //PREVENT DEFAULT FORM BTN
@@ -74,9 +74,9 @@ btnElement.addEventListener("click", handleSubmitButton);
 //SHOW LIST LISTENER + HANDLER
 
 function listenShowsEvents() {
-  const showElements = document.querySelectorAll('.js-show');
+  const showElements = document.querySelectorAll(".js-show");
   for (const showElement of showElements) {
-    showElement.addEventListener('click', handleShow);
+    showElement.addEventListener("click", handleShow);
   }
 }
 
@@ -84,62 +84,63 @@ function handleShow(ev) {
   const clickedShow = ev.currentTarget;
   const clickedShowId = clickedShow.id;
   //console.log(clickedShowId);
-  const resultShows = shows; 
+  const resultShows = shows;
   //console.log(resultShows);
-  for(const result of resultShows){
+  for (const result of resultShows) {
     const showItem = result.show;
-    const itemId = showItem.id; 
+    const itemId = showItem.id;
     const stringId = `${itemId}`;
-    if (stringId === clickedShowId){
+    if (stringId === clickedShowId) {
       console.log("te encontré");
-      for (const favorite of favoriteShows) {
-        console.log("entras o qué");
-        const favoriteItem = favorite.show;
-        const favoriteId = `${favoriteItem.id}`;
-        const favoritesFoundIndex = favoriteShows.findIndex(favorite => favoriteId === clickedShowId);
-        console.log(favoritesFoundIndex);
-        if (favoritesFoundIndex === -1){
-          favoriteShows.push(result)
-          console.log("no hay de eso aquí");
-        }
-        else {
-          favoriteShows.splice(favoritesFoundIndex, 1);
-          console.log("parece que ya estaba");
-        } 
+      function isItAFavorite() {
+        console.log("es favorita o no");
+       // for (const favorite of favoriteShows) {
+          console.log("buscando en favoritos");
+            const favoritesFoundIndex = favoriteShows.findIndex((favorite) => favorite.show.id === parseInt(clickedShowId)
+          );
+          if (favoritesFoundIndex === -1) {
+            favoriteShows.push(result)
+          } else {
+            favoriteShows.splice(favoritesFoundIndex, 1)
+          }
+          console.log(favoritesFoundIndex);
+       // }
       }
-      //favoriteShows.push(result)
+      isItAFavorite();
     }
   }
-  saveLocalFavorites()
+  saveLocalFavorites();
   console.log(favoriteShows);
-  paintFavorites()
-} 
+  renderResult();
+  paintFavorites();
+}
 
+//RUN THROUGH FAVORITES
 
 //SAVE FAVORITES IN LOCAL STORAGE
 
 function saveLocalFavorites() {
   const stringfavorites = JSON.stringify(favoriteShows);
-  localStorage.setItem('showFavorites', stringfavorites);
+  localStorage.setItem("showFavorites", stringfavorites);
 }
 
 //GET FROM LOCAL
 
 function getFromLocalStorage() {
   console.log("hola");
-  const localStorageFavorites = localStorage.getItem('showFavorites');
+  const localStorageFavorites = localStorage.getItem("showFavorites");
   if (localStorageFavorites) {
     const arrayFavorites = JSON.parse(localStorageFavorites);
     favoriteShows = arrayFavorites;
-    paintFavorites()
+    paintFavorites();
   }
 }
-getFromLocalStorage()
+getFromLocalStorage();
 
 // PAINT FAVORITES
 
 function paintFavorites() {
-  let htmlCode="";
+  let htmlCode = "";
   for (const favorite of favoriteShows) {
     const favoriteItem = favorite.show;
     const favoriteTitle = favoriteItem.name;
@@ -161,44 +162,5 @@ function paintFavorites() {
     htmlCode += `<p>${favoriteTitle}</p>`;
     htmlCode += "</li>";
   }
-  favoritesListElement.innerHTML= htmlCode;
+  favoritesListElement.innerHTML = htmlCode;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* function handleShow(ev) {
-  const clickedShowId = ev.currentTarget.id;
-  // busco si la paleta clickada está en el array de favoritos
-  const favoritesFoundIndex = favorites.findIndex(favorite => favorite.id === clickedShowId);
-  // si la paleta no está en favoritos findIndex me ha devuelto -1
-  if (favoritesFoundIndex === -1) {
-    // busco la paleta clickada en el array de paletas
-    const showFound = shows.find(show => show.id === clickedShowId);
-    // para luego añadirlo al array de favoritos
-    favorites.push(showFound);
-  } else {
-    // si el findIndex me ha devuelto un número mayor o igual a 0 es que sí está en el array de favoritos
-    // quiero sacarlo de array de favoritos
-    // para utilizar splice necesito el índice del elemento que quiero borrar
-    // y quiero borrar un solo elemento
-    favorites.splice(favoritesFoundIndex, 1);
-  }
-  console.log(favorites);
-  // meter aqui función para pintar favoritos
-} */
