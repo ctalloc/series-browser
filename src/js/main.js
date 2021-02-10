@@ -146,8 +146,10 @@ function paintFavorites() {
       }
       return validUrl;
     }
-    htmlCode += `<li id="${favoriteId} class="favList--item">`;
-    htmlCode += `<img src="${favoriteThumbnail}" alt="${favoriteTitle} poster" title="${favoriteTitle}">`;
+    htmlCode += `<li id="${favoriteId}" class="favorites__list--item">`;
+    htmlCode += `<div class="favorites__list--imgContainer">`;
+    htmlCode += `<img src="${favoriteThumbnail}" class="favorites__list--img" alt="${favoriteTitle} poster" title="${favoriteTitle}">`;
+    htmlCode += `</div>`
     htmlCode += `<p>${favoriteTitle}</p>`;
     htmlCode += `<button class="js-delete delete__button" id="${favoriteShows.indexOf(favorite)}">`;
     htmlCode += `<span>Borrar</span>`;

@@ -3,16 +3,17 @@
 }
 
 .page__main {
-  height: 100vh;
   display: flex;
   flex-direction: row;
   position: relative;
   top: 80px;
   font-family: $font-main;
+  max-width: 1600px;
+  margin: 0 auto 0 auto;
   &--favoriteContainer {
     background-image: linear-gradient($color-bg1, $color-bg2);
     width: 30%;
-    height: 100%;
+    //height: 100%;
     padding: 15px;
   }
   &--resultContainer {
@@ -23,21 +24,35 @@
 .resultList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
   list-style-type: none;
   font-size: 18px;
-  &--item{
+  &--item {
     padding: 20px;
   }
 }
 .favorites {
   &__title {
     font-family: $font-title;
+    margin: 20px 0 20px 0;
   }
   &__list {
     font-family: $font-main;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    &--item {
+      padding: 10px;
+    }
   }
 }
-.show--favorite{
-  background-color: $color-bg3;
+.favorites__list--imgContainer{
+  width: 150px;
 }
-
+.favorites__list--img{
+  width: inherit;
+}
+.show--favorite {
+  background-color: $color-bg3;
+  border: 3px dashed $color-txt3;
+}
