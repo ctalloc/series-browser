@@ -151,7 +151,7 @@ function paintFavorites() {
     htmlCode += `<img src="${favoriteThumbnail}" class="favorites__list--img" alt="${favoriteTitle} poster" title="${favoriteTitle}">`;
     htmlCode += `</div>`;
     htmlCode += `<p class="favorites__list--title">${favoriteTitle}</p>`;
-    htmlCode += `<button class="js-delete favorites__list--deleteBtn" id="${favoriteShows.indexOf(
+    htmlCode += `<button class="js-delete favorites__list--deleteBtn" title="Click para borrar de favoritos" id="${favoriteShows.indexOf(
       favorite
     )}">`;
     htmlCode += `<span>Borrar</span>`;
