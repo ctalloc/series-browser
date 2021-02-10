@@ -1,8 +1,8 @@
 .body {
   background-color: $color-bg1;
 }
-
 .page__main {
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
   position: relative;
@@ -35,6 +35,7 @@
   &__title {
     font-family: $font-title;
     margin: 20px 0 20px 0;
+    scroll-margin-top: 180px;
   }
   &__list {
     font-family: $font-main;
