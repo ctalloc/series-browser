@@ -3,12 +3,19 @@
   left: 0;
   top: 80px;
   width: 100vw;
-  padding: 1rem;
+  padding: 8px;
   background-color: $color-txt4;
 }
 .footer__txt{
   color: $color-bg1;
   font-family: $font-title;
   font-weight: normal;
-  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  display: inline-block;
+  transition: all .1s;
+  &:hover{
+      color: $color-bg3;
+      transform: scale(1.04);
+  }
 }

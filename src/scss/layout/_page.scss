@@ -13,7 +13,6 @@
   &--favoriteContainer {
     background-image: linear-gradient($color-bg1, $color-bg2);
     width: 30%;
-    //height: 100%;
     padding: 15px;
   }
   &--resultContainer {
@@ -45,14 +44,22 @@
     &--item {
       padding: 10px;
     }
+    &--imgContainer{
+      width: 150px;
+    }
+    &--img{
+      width: inherit;
+    }
+    &--deleteBtn{
+      border: none;
+      padding: 4px;
+    }
+    &--title{
+      padding: 4px 0;
+    }
   }
 }
-.favorites__list--imgContainer{
-  width: 150px;
-}
-.favorites__list--img{
-  width: inherit;
-}
+
 .show--favorite {
   background-color: $color-bg3;
   border: 3px dashed $color-txt3;

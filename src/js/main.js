@@ -28,7 +28,7 @@ function renderResult() {
     const showTitle = showItem.name;
     const showId = showItem.id;
     let showImages = showItem.image;
-    let isFavoriteClass = isFavoriteShow(serie) ? 'show--favorite' : '';
+    let isFavoriteClass = isFavoriteShow(serie) ? "show--favorite" : "";
     const showThumbnail = isImgUrlValid();
     function isImgUrlValid() {
       let validUrl = "";
@@ -52,7 +52,7 @@ function renderResult() {
 //IS FAVORITE SHOW
 
 function isFavoriteShow(shows) {
-  return !!favoriteShows.find(favorite => favorite.show.id === shows.show.id);
+  return !!favoriteShows.find((favorite) => favorite.show.id === shows.show.id);
 }
 
 //PREVENT DEFAULT FORM BTN
@@ -149,23 +149,25 @@ function paintFavorites() {
     htmlCode += `<li id="${favoriteId}" class="favorites__list--item">`;
     htmlCode += `<div class="favorites__list--imgContainer">`;
     htmlCode += `<img src="${favoriteThumbnail}" class="favorites__list--img" alt="${favoriteTitle} poster" title="${favoriteTitle}">`;
-    htmlCode += `</div>`
-    htmlCode += `<p>${favoriteTitle}</p>`;
-    htmlCode += `<button class="js-delete delete__button" id="${favoriteShows.indexOf(favorite)}">`;
+    htmlCode += `</div>`;
+    htmlCode += `<p class="favorites__list--title">${favoriteTitle}</p>`;
+    htmlCode += `<button class="js-delete favorites__list--deleteBtn" id="${favoriteShows.indexOf(
+      favorite
+    )}">`;
     htmlCode += `<span>Borrar</span>`;
     htmlCode += `</button>`;
     htmlCode += "</li>";
   }
   favoritesListElement.innerHTML = htmlCode;
-  listenDeleteButtons()
+  listenDeleteButtons();
 }
 
 // DELETE BUTTON
 
 function listenDeleteButtons() {
-  const deleteButtons = document.querySelectorAll('.js-delete');
+  const deleteButtons = document.querySelectorAll(".js-delete");
   for (const deleteButton of deleteButtons) {
-    deleteButton.addEventListener('click', handleDelete);
+    deleteButton.addEventListener("click", handleDelete);
   }
 }
 
