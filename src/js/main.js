@@ -16,6 +16,7 @@ function callToApi(searchValue) {
     .then((data) => {
       shows = data;
       renderResult(data);
+      console.log(shows);
     });
 }
 
@@ -43,6 +44,7 @@ function renderResult() {
     htmlCode += `<li class="resultList--item js-show ${isFavoriteClass}" id="${showId}">`;
     htmlCode += `<img src="${showThumbnail}" alt="${showTitle} poster" title="Click para agregar/quitar ${showTitle} a favoritos">`;
     htmlCode += `<p>${showTitle}</p>`;
+    htmlCode += `<p>${serie.show.language}</p>`
     htmlCode += "</li>";
   }
   resultsElement.innerHTML = htmlCode;
@@ -177,3 +179,15 @@ function handleDelete(ev) {
   paintFavorites();
   renderResult();
 }
+
+
+// LOG BUTTON
+
+const logBtn = document.querySelector('.js-log');
+
+function handleLog(){
+  console.log(favoriteShows.length);
+}
+
+logBtn.addEventListener("click", handleLog);
+
