@@ -35,7 +35,7 @@
 		"type": "git",
 		"url": "git+ssh://git@github.com:Adalab/adalab-web-starter-kit.git"
 	},
-	"author": "Adalab",
+	"author": "ctalloc",
 	"license": "MIT",
-	"homepage": "https://github.com/adalab/adalab-web-starter-kit"
+	"homepage": "https://ctalloc.github.io/series-browser/"
 }
